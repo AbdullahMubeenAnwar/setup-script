@@ -22,11 +22,8 @@ if ! type -p java >/dev/null 2>&1; then
   apt-get install -y -qq openjdk-11-jdk > /dev/null 2>&1
 fi
 
-import os
-os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-11-openjdk-amd64"
-os.environ["PATH"] += os.pathsep + f"{os.environ['JAVA_HOME']}/bin"
-
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+export PATH=$PATH:$JAVA_HOME/bin
 
 if [[ "$PYSPARK" == "3.3"* ]]; then
   PYSPARK="3.3.4"
